@@ -1,10 +1,11 @@
 #!/bin/bash
 INTERNAL_DIR=$(dirname "$BASH_SOURCE")
-WORKSPACE=$INTERNAL_DIR/workspace
-WORKSPACE_ROOT=""
 if [ -f ~/.config/DeepFaceLab/workspace.conf ]; then
   WORKSPACE=$(cat ~/.config/DeepFaceLab/workspace.conf)
   WORKSPACE_ROOT=$(realpath "$WORKSPACE/..")
+else
+  WORKSPACE_ROOT=$INTERNAL_DIR/workspace
+  WORKSPACE=$WORKSPACE_ROOT/default
 fi
 PYTHON=`which python`
 
@@ -23,7 +24,7 @@ workspace_select(){
               break
               ;;
             "custom input" )
-              echo -n "Custom workspace directory (leave empty for DeepFaceLab default): "; read WORKSPACE_SELECTED
+              echo -n "Custom workspace directory: "; read WORKSPACE_SELECTED
               break
               ;;
             "cancel selection" )
