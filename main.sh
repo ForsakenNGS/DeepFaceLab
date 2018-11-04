@@ -12,7 +12,7 @@ PYTHON=`which python`
 WORKSPACE_SELECTED=""
 workspace_select(){
         WORKSPACE_SELECTED=""
-        readarray -t PROJECT_LIST < <(find $WORKSPACE_ROOT -mindepth 1 -maxdepth 1 -type d -printf '%P\n')
+        readarray -t PROJECT_LIST < <(find $WORKSPACE_ROOT/ -mindepth 1 -maxdepth 1 -type d -printf '%P\n')
         PROJECT_LIST+=("custom input")
         PROJECT_LIST+=("DeepFaceLab default")
         PROJECT_LIST+=("cancel selection")
